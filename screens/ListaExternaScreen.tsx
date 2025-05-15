@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react'
 
 export default function ListaExternaScreen() {
   const [data, setdata] = useState([])
-  
   const [modalVisible, setModalVisible] = useState(false)
   const [selectedItem, setSelectedItem] = useState<any>(null)
 
@@ -24,7 +23,7 @@ export default function ListaExternaScreen() {
 
   function cerrarModal() {
     setModalVisible(false)
-    
+    setSelectedItem(null)
   }
 
   return (
@@ -32,7 +31,7 @@ export default function ListaExternaScreen() {
       <Text style={{ fontSize: 22, fontWeight: 'bold', margin: 10 }}>Lista de Videojuegos</Text>
       <FlatList
         data={data}
-      
+        keyExtractor={(_, idx) => idx.toString()}
         renderItem={({ item }: any) =>
           <TouchableOpacity style={styles.container} onPress={() => mostrarModal(item)}>
             <View style={styles.contenido}>
@@ -46,19 +45,23 @@ export default function ListaExternaScreen() {
         }
       />
 
-      <Modal visible={modalVisible} transparent={true} animationType="slide">
+      <Modal
+        visible={modalVisible}
+        transparent={true}
+        animationType="slide"
+        onRequestClose={cerrarModal}
+      >
         <View style={styles.modalBg}>
           <View style={styles.modalContent}>
-            {selectedItem ? (
-    <>
-      <Image source={{ uri: selectedItem.imagen }} style={styles.img} />
-      <Text style={{ fontWeight: 'bold', fontSize: 18 }}>{selectedItem.titulo}</Text>
-      <Text>Género: {selectedItem.genero}</Text>
-      <Text>Año: {selectedItem.anio}</Text>
-      <Button title="Cerrar" onPress={cerrarModal} />
-    </>
-  ) : null}
-            
+            {selectedItem && (
+              <>
+                <Image source={{ uri: selectedItem.imagen }} style={styles.img} />
+                <Text style={{ fontWeight: 'bold', fontSize: 18 }}>{selectedItem.titulo}</Text>
+                <Text>Género: {selectedItem.genero}</Text>
+                <Text>Año: {selectedItem.anio}</Text>
+                <Button title="Cerrar" onPress={cerrarModal} />
+              </>
+            )}
           </View>
         </View>
       </Modal>
@@ -75,7 +78,7 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   container: {
-    backgroundColor: '#68aae8',
+    backgroundColor: '#FFB22C',
     borderRadius: 20,
     margin: 8,
     padding: 10,
@@ -90,12 +93,12 @@ const styles = StyleSheet.create({
   },
   modalBg: {
     flex: 1,
-    backgroundColor: 'rgba(0,0,0,0.3)',
+    
     justifyContent: 'center',
     alignItems: 'center',
   },
   modalContent: {
-    backgroundColor: 'white',
+    backgroundColor: '#FEF3E2',
     padding: 20,
     borderRadius: 15,
     alignItems: 'center',

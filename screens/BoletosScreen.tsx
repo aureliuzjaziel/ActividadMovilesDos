@@ -47,9 +47,9 @@ export default function BoletosScreen() {
   return (
     <ImageBackground source={require("../assets/Images/fondo carrito.jpg")} 
     style={styles.container}>
-        <Text style={{color:"black", fontSize:40}}>Boleto</Text>
+        <Text  style={styles.titulo}>Boleto</Text>
         
-        <TextInput
+        <TextInput style={styles.input}
         placeholder='Ingresar edad' keyboardType='numeric' value={edad} onChangeText={setedad}
 
         />
@@ -83,28 +83,78 @@ export default function BoletosScreen() {
 
 const styles = StyleSheet.create({
 
-    container:{
-        flex:1,
-        justifyContent:"center",
-        alignItems:"center",
-        
+    container: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        padding: 20,
+        backgroundColor: "rgba(255,255,255,0.85)",
     },
-    boleto:{
-        backgroundColor:"rgba(40, 48, 20, 0.21)",
-        flexDirection:"row",
-        height:50,
-        width:"50%",
-        justifyContent:"space-around",
+    boleto: {
+    
+    flexDirection: "row",
+    height: 60,
+    width: "65%",
+    justifyContent: "space-between",
+    alignItems: "center",
+    borderRadius: 30,
+    paddingHorizontal: 25,
+    marginVertical: 20,
+    shadowOpacity: 0.15,
+    shadowRadius: 8,
+    elevation: 6,
+    borderWidth: 1,
+    borderColor: "#e0e0e0",
+},
+    img: {
+        width: 180,
+        height: 180,
+        borderRadius: 25,
+        marginVertical: 15,
+        borderWidth: 3,
+        borderColor: "#fff",
+        shadowColor: "#000",
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.2,
+        shadowRadius: 8,
+        elevation: 6,
     },
-    img:{
-        width:200,
-        height:200,
-        borderRadius:20,
+    modal: {
+        backgroundColor: "rgba(40, 48, 20, 0.21)",
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
     },
-    modal:{
-        backgroundColor:"rgba(40, 48, 20, 0.21)",
-        flex:1,
-        justifyContent:"center",
-        alignItems:"center",
+    input: {
+        backgroundColor: "#fff",
+        borderRadius: 18,
+        paddingHorizontal: 20,
+        paddingVertical: 12,
+        fontSize: 20,
+        width: "80%",
+        marginVertical: 12,
+        borderWidth: 1,
+        borderColor: "#b2bec3",
+        shadowColor: "#000",
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.08,
+        shadowRadius: 4,
+        elevation: 2,
+        color: "#222",
     },
+    titulo: {
+        color: "#222f3e",
+        fontSize: 42,
+        fontWeight: "bold",
+        marginBottom: 18,
+        textShadowColor: "#dfe6e9",
+        textShadowOffset: { width: 1, height: 2 },
+        textShadowRadius: 3,
+    },
+    totalText: {
+        fontSize: 22,
+        color: "#222f3e",
+        fontWeight: "bold",
+        marginBottom: 10,
+    }
 })

@@ -53,15 +53,17 @@ export default function CalculoScreen() {
         value={nombre}/>
 
         <TextInput
-        placeholder='Ingresa edad'
+        placeholder="ingresa edad"
+        keyboardType='numeric'
         style={styles.input}
         onChangeText={(texto)=>setedad(+texto)}
-        value={edad.toString()}/>
+        value={edad ===0? "":edad.toString()}/>
         <TextInput
         placeholder='Ingresa salario'
         style={styles.input}
+        keyboardType='numeric'
         onChangeText={(texto)=>setsalario(+texto)}
-        value={salario.toString()}/>
+        value={salario ===0? "":salario.toString()}/>
         <TouchableOpacity style={styles.btn} onPress={calcular}>
             <Text style={{fontSize:25}}>Verificar</Text>
             <Image source={{uri:"https://images.creativefabrica.com/products/previews/2024/03/18/9TbbjdEiS/2drDJiAjw7sygw5g10SGfaHk04I-mobile.jpg"}}
@@ -75,34 +77,49 @@ export default function CalculoScreen() {
 }
 
 const styles = StyleSheet.create({
-    container:{
-        backgroundColor:"#86ad67",
-        flex:1,
-        justifyContent:"center",
-        alignItems:"center",
+    container: {
+        backgroundColor: "#e0f7fa",
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
     },
-    input:{
-        fontSize:25,
-        backgroundColor:"white",
-        margin:4,
-        width:"80%",
-        height:50,
-        borderRadius:20,
-        paddingHorizontal:20,
+    input: {
+        fontSize: 22,
+        backgroundColor: "#fff",
+        margin: 8,
+        width: "85%",
+        height: 48,
+        borderRadius: 15,
+        paddingHorizontal: 18,
+        borderWidth: 1,
+        borderColor: "#b2dfdb",
+        shadowColor: "#000",
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.1,
+        shadowRadius: 4,
+        elevation: 2,
     },
-    btn:{
-        backgroundColor:"#a7ad67",
-        width:"90%",
-        height:150,
-        alignItems:"center",
-        borderRadius:20,
-        flexDirection:"row",
-        justifyContent:"center"
-        
-
+    btn: {
+        backgroundColor: "#26a69a",
+        width: "90%",
+        height: 120,
+        alignItems: "center",
+        borderRadius: 18,
+        flexDirection: "row",
+        justifyContent: "center",
+        marginTop: 20,
+        shadowColor: "#000",
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.2,
+        shadowRadius: 6,
+        elevation: 4,
     },
-    img:{
-        width:90,
-        height:90,
+    img: {
+        width: 80,
+        height: 80,
+        borderRadius: 40,
+        marginLeft: 18,
+        borderWidth: 2,
+        borderColor: "#fff",
     }
 })
